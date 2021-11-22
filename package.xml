@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>robot-lab</name>
+  <version>0.0.0</version>
+  <description>The robot-lab package</description>
+  <maintainer email="emanueleizzo94@gmail.com"></maintainer>
+  <license>TODO</license>
+  <buildtool_depend>catkin</buildtool_depend>
+</package>
