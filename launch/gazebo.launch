@@ -2,7 +2,6 @@
 <launch>
 
   <arg name="model" />
-  <arg name="rvizconfig" default="$(find robot-lab)/rviz/default.rviz" />
   <arg name="paused" default="false" />
   <arg name="use_sim_time" default="true" />
   <arg name="gui" default="true" />
@@ -19,14 +18,7 @@
   </include>
 
   <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
-  <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
 
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-z 1.0 -unpause -urdf -model robot -param robot_description" respawn="false" output="screen" />
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
-  <node if="$(arg gui)" name="joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
-  <node unless="$(arg gui)" name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
-  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
-    <param name="publish_frequency" type="double" value="30.0" />
-  </node>
 
 </launch>
