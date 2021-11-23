@@ -25,7 +25,7 @@ def move(velocity_publisher):
 
 
 def rotate(velocity_publisher):
-    MAX_DIST = 2
+    MAX_DIST = 1
     global distance
 
     velocity_message = Twist()

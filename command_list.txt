@@ -1,0 +1,17 @@
+GAZEBO PRIMO MODELLO
+- roslaunch robot-lab gazebo.launch model:='$(find robot-lab)/urdf/first.xacro'
+
+RVIZ PRIMO MODELLO
+- roslaunch robot-lab rviz.launch model:='$(find robot-lab)/urdf/first.xacro'
+
+LANCIO NODO PER IL BASIC MOTION
+- rosrun robot-lab basic_motion.py
+
+GAZEBO SECONDO MODELLO
+- roslaunch robot-lab gazebo.launch model:='$(find robot-lab)/urdf/second.xacro'
+
+RVIZ SECONDO MODELLO
+- roslaunch robot-lab rviz.launch model:='$(find robot-lab)/urdf/second.xacro'
+
+LANCIO NODO PER IL BASIC AUTONOMOUS DRIVING
+- rosrun robot-lab baisc_autonomous_driving.py
