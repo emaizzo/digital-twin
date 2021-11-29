@@ -15,3 +15,5 @@ RVIZ SECONDO MODELLO
 
 LANCIO NODO PER IL BASIC AUTONOMOUS DRIVING
 - rosrun robot-lab baisc_autonomous_driving.py
+
+VERSIONS
