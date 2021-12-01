@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<robot name="first_prototype" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <link name="base_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 -0.95" />
+      <geometry>
+        <mesh filename="package://robot-lab/meshes/robot.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 -0.95" />
+      <geometry>
+        <mesh filename="package://robot-lab/meshes/robot.dae" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="38.45735" />
+      <origin xyz="0 0 -0.95" />
+      <inertia ixx="1" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="1" />
+    </inertial>
+  </link>
+  <gazebo>
+    <plugin name="BuoyancyPlugin" filename="libBuoyancyPlugin.so">
+      <fluid_density>1000</fluid_density>
+    </plugin>
+  </gazebo>
+
+  <gazebo>
+    <plugin name="omni_steering" filename="libgazebo_ros_planar_move.so">
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <codometryFrame>odom</codometryFrame>
+      <codometryRate>50.0</codometryRate>
+      <robotBaseFrame>base_link</robotBaseFrame>
+      <publishTF>false</publishTF>
+    </plugin>
+  </gazebo>
+
+</robot>
