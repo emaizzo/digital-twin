@@ -4,23 +4,24 @@
 
   <link name="base_link">
     <visual>
-      <origin rpy="0 0 0" xyz="0 0 -0.95" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
       <geometry>
         <mesh filename="package://robot-lab/meshes/robot.dae" />
       </geometry>
     </visual>
     <collision>
-      <origin rpy="0 0 0" xyz="0 0 -0.95" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
       <geometry>
         <mesh filename="package://robot-lab/meshes/robot.dae" />
       </geometry>
     </collision>
     <inertial>
-      <mass value="38.45735" />
-      <origin xyz="0 0 -0.95" />
+      <mass value="37.5000" />
+      <origin xyz="0 0 -0.9" />
       <inertia ixx="1" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="1" />
     </inertial>
   </link>
+
   <gazebo>
     <plugin name="BuoyancyPlugin" filename="libBuoyancyPlugin.so">
       <fluid_density>1000</fluid_density>
@@ -36,6 +37,70 @@
       <robotBaseFrame>base_link</robotBaseFrame>
       <publishTF>false</publishTF>
     </plugin>
+  </gazebo>
+
+  <joint name="sonar_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="sonar_link" />
+    <origin xyz="0.334 0 0.06" />
+  </joint>
+
+  <link name="sonar_link">
+    <inertial>
+      <mass value="0.001" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="0.000000017" ixy="0" ixz="0" iyy="0.000000017" iyz="0" izz="0.000000017" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot-lab/meshes/max_sonar_ez4.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.01 0.01 0.01" />
+      </geometry>
+    </collision>
+  </link>
+
+  <gazebo reference="sonar_link">
+    <sensor type="ray" name="sonar">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>true</visualize>
+      <update_rate>50</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>10</samples>
+            <resolution>1</resolution>
+            <min_angle>-0.14835</min_angle>
+            <max_angle>0.14835</max_angle>
+          </horizontal>
+          <vertical>
+            <samples>10</samples>
+            <resolution>1</resolution>
+            <min_angle>-0.14835</min_angle>
+            <max_angle>0.14835</max_angle>
+          </vertical>
+        </scan>
+        <range>
+          <min>0.01</min>
+          <max>3</max>
+          <resolution>0.02</resolution>
+        </range>
+      </ray>
+      <plugin filename="libgazebo_ros_range.so" name="gazebo_ros_range">
+        <gaussianNoise>0.005</gaussianNoise>
+        <alwaysOn>true</alwaysOn>
+        <updateRate>50</updateRate>
+        <topicName>sonar</topicName>
+        <frameName>sonar_link</frameName>
+        <radiation>INFRARED</radiation>
+        <fov>0.2967</fov>
+      </plugin>
+    </sensor>
   </gazebo>
 
 </robot>

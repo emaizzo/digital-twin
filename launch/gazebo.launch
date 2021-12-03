@@ -7,7 +7,7 @@
   <arg name="gui" default="true" />
   <arg name="headless" default="false" />
   <arg name="debug" default="false" />
-  <arg name="world_file" />
+  <arg name="world_file" default="$(find robot-lab)/worlds/empty.world" />
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(arg world_file)" />
