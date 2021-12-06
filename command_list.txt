@@ -16,4 +16,13 @@ RVIZ SECONDO MODELLO
 LANCIO NODO PER IL BASIC AUTONOMOUS DRIVING
 - rosrun robot-lab baisc_autonomous_driving.py
 
+GAZEBO ROBOT MARINO
+- roslaunch robot-lab gazebo.launch model:='$(find robot-lab)/urdf/robot.xacro' world_file:='$(find robot-lab)/worlds/ocean_waves.world'
+
+RVIZ ROBOT MARINO
+- roslaunch robot-lab rviz.launch model:='$(find robot-lab)/urdf/robot.xacro'
+
 VERSIONS
+- ROS: Melodic
+- Gazebo: 9.0.0
+- Rviz: 1.13.21
