@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<robot name="argo" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:arg name="debug" default="0" />
+  <xacro:arg name="namespace" default="argo" />
+  <xacro:arg name="inertial_reference_frame" default="world" />
+
+  <xacro:include filename="$(find robot-lab)/description/urdf/argo_base.xacro" />
+  <xacro:include filename="$(find robot-lab)/description/urdf/argo.gazebo.xacro" />
+
+  <xacro:argo_base namespace="$(arg namespace)" inertial_reference_frame="$(arg inertial_reference_frame)">
+    <gazebo>
+      <plugin name="uuv_plugin" filename="libuuv_underwater_object_ros_plugin.so">
+        <fluid_density>1028.0</fluid_density>
+        <flow_velocity_topic>hydrodynamics/current_velocity</flow_velocity_topic>
+        <debug>$(arg debug)</debug>
+        <xacro:argo_hydro_model namespace="$(arg namespace)" />
+      </plugin>
+    </gazebo>
+  </xacro:argo_base>
+
+  <!-- <gazebo>
+    <plugin name="BuoyancyPlugin" filename="libBuoyancyPlugin.so">
+      <fluid_density>1000</fluid_density>
+    </plugin>
+  </gazebo> -->
+
+  <xacro:default_joint_state_publisher namespace="$(arg namespace)" update_rate="50" />
+
+</robot>

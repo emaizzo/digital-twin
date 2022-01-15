@@ -1,48 +1,51 @@
 #!/usr/bin/env python
 import rospy
-from geometry_msgs.msg import Twist
+from geometry_msgs.msg import TwistStamped, Wrench
 import math
 import time
 from nav_msgs.msg import Odometry
 
 
-def poseCallback(pose_message):
-    global x
-    global y, yaw
-    x = pose_message.pose.pose.position.x
-    y = pose_message.pose.pose.position.y
-    yaw = pose_message.pose.pose.position.z
+# def poseCallback(pose_message):
+#     global x
+#     global y, yaw
+#     x = pose_message.pose.pose.position.x
+#     y = pose_message.pose.pose.position.y
+#     yaw = pose_message.pose.pose.position.z
 
 
 def move(velocity_publisher, speed, distance, is_forward):
 
-    velocity_message = Twist()
+    velocity_message = Wrench()
 
     global x, y
-    x0 = x
-    y0 = y
+    x0 = 0
+    y0 = 0
 
     if (is_forward):
-        velocity_message.linear.x = abs(speed)
+        velocity_message.force.x = abs(speed)
+        # velocity_message.torque.z = abs(speed)
+
     else:
-        velocity_message.linear.x = -abs(speed)
+        velocity_message.force.x = -abs(speed)
+        # velocity_message.torque.z = -abs(speed)
 
     distance_moved = 0.0
-    loop_rate = rospy.Rate(10)
+    loop_rate = rospy.Rate(50)
 
     while True:
         rospy.loginfo("Robot moves forwards")
         velocity_publisher.publish(velocity_message)
 
-        loop_rate.sleep()
+        # loop_rate.sleep()
 
-        distance_moved = abs(math.sqrt(((x-x0) ** 2) + ((y-y0) ** 2)))
-        print("Distance moved :", distance_moved)
-        if not (distance_moved < distance):
-            break
+        # distance_moved = abs(math.sqrt(((0-x0) ** 2) + ((0-y0) ** 2)))
+        # print("Distance moved :", distance_moved)
+        # if not (distance_moved < distance):
+        #     break
 
-    velocity_message.linear.x = 0
-    velocity_publisher.publish(velocity_message)
+    # velocity_message.wrench.force.x = 0
+    # velocity_publisher.publish(velocity_message)
 
 
 # def go_to_goal(velocity_publisher, x_goal, y_goal):
@@ -77,14 +80,14 @@ if __name__ == '__main__':
         rospy.init_node('first_motion_pose', anonymous=True)
 
         velocity_publisher = rospy.Publisher(
-            "/cmd_vel", Twist, queue_size=10)
+            "/argo/thruster_manager/input", Wrench, queue_size=10)
 
-        pose_subscriber = rospy.Subscriber(
-            "/odom", Odometry, poseCallback)
+        # pose_subscriber = rospy.Subscriber(
+        #     "/odom", Odometry, poseCallback)
 
         time.sleep(2)
 
-        move(velocity_publisher, 1.0, 9.0, True)
+        move(velocity_publisher, 200, 9.0, True)
         # go_to_goal(velocity_publisher, 3, 3)
 
     except rospy.ROSInterruptException:

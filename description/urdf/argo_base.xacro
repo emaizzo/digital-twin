@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find uuv_descriptions)/urdf/common.urdf.xacro" />
+  <xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/sensor_snippets.xacro" />
+  <xacro:include filename="$(find robot-lab)/description/urdf/argo_snippets.xacro" />
+  <xacro:include filename="$(find uuv_gazebo_ros_plugins)/urdf/snippets.xacro" />
+
+  <xacro:property name="visual_mesh_file" value="file://$(find robot-lab)/meshes/robot.dae" />
+  <xacro:property name="mass" value="1862.87" />
+  <!-- <xacro:property name="mass" value="37.498" /> -->
+
+  <xacro:macro name="argo_base" params="namespace *gazebo inertial_reference_frame">
+    <link name="${namespace}/base_link">
+      <inertial>
+        <mass value="${mass}" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia ixx="525.39" ixy="1.44" ixz="33.41" iyy="794.20" iyz="2.6" izz="691.23" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="${visual_mesh_file}" scale="1 1 1" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <geometry>
+          <mesh filename="${visual_mesh_file}" scale="1 1 1" />
+        </geometry>
+      </collision>
+    </link>
+
+    <xacro:insert_block name="gazebo" />
+
+    <xacro:include filename="$(find robot-lab)/description/urdf/argo_sensors.xacro" />
+    <xacro:include filename="$(find robot-lab)/description/urdf/argo_actuators.xacro" />
+
+  </xacro:macro>
+</robot>
