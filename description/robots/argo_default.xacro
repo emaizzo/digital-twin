@@ -18,12 +18,6 @@
     </gazebo>
   </xacro:argo_base>
 
-  <!-- <gazebo>
-    <plugin name="BuoyancyPlugin" filename="libBuoyancyPlugin.so">
-      <fluid_density>1000</fluid_density>
-    </plugin>
-  </gazebo> -->
-
   <xacro:default_joint_state_publisher namespace="$(arg namespace)" update_rate="50" />
 
 </robot>

@@ -1,9 +1,8 @@
 <launch>
     <arg name="use_ned_frame" default="false" doc="If true, uses the NED (North-East-Down) frame conversion. If false, ENU (East-North-Up) will be used per default." />
-    <arg name="world_file" default="$(find robot-lab)/worlds/ocean_waves.world" />
     <arg name="x" default="0" doc="X coordinate of the vehicle's initial position (in ENU)" />
     <arg name="y" default="0" doc="Y coordinate of the vehicle's initial position (in ENU)" />
-    <arg name="z" default="0" doc="Z coordinate of the vehicle's initial position (in ENU)" />
+    <arg name="z" default="-1" doc="Z coordinate of the vehicle's initial position (in ENU)" />
     <arg name="yaw" default="0" doc="Yaw angle of the vehicle's initial orientation" />
     <arg name="paused" default="false" />
     <arg name="use_sim_time" default="true" />
@@ -11,14 +10,7 @@
     <arg name="headless" default="false" />
     <arg name="debug" default="false" />
 
-    <include file="$(find gazebo_ros)/launch/empty_world.launch">
-        <arg name="world_name" value="$(arg world_file)" />
-        <arg name="debug" value="$(arg debug)" />
-        <arg name="gui" value="$(arg gui)" />
-        <arg name="paused" value="$(arg paused)" />
-        <arg name="use_sim_time" value="$(arg use_sim_time)" />
-        <arg name="headless" value="$(arg headless)" />
-      </include>
+    <include file="$(find robot-lab)/launch/ocean_waves.launch" />
 
     <include file="$(find robot-lab)/launch/upload_argo.launch">
         <arg name="x" value="$(arg x)" />
