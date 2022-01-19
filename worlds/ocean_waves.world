@@ -135,7 +135,7 @@
     </model>
 
     <model name="rocks_1">
-      <pose>13.591804 -1.615421 0 0 0 5</pose>
+      <pose>13.591804 -1.615421 0 0 0 4.7</pose>
       <static>true</static>
       <link name="rocks_1">
         <visual name="visual">
@@ -156,7 +156,7 @@
     </model>
 
     <model name="rocks_2">
-      <pose>14.239582 10.455322 0 0 0 5</pose>
+      <pose>14.239582 10.455322 0 0 0 4.7</pose>
       <static>true</static>
       <link name="rocks_2">
         <visual name="visual">
@@ -177,7 +177,7 @@
     </model>
 
     <model name="rocks_3">
-      <pose>14.351398 -14.602087 0 0 0 5</pose>
+      <pose>14.351398 -14.602087 0 0 0 4.7</pose>
       <static>true</static>
       <link name="rocks_3">
         <visual name="visual">
@@ -198,7 +198,7 @@
     </model>
 
     <model name="rocks_4">
-      <pose>34.265690 10.683140 0 0 0 5</pose>
+      <pose>34.265690 10.683140 0 0 0 4.7</pose>
       <static>true</static>
       <link name="rocks_4">
         <visual name="visual">
@@ -219,7 +219,7 @@
     </model>
 
     <model name="rocks_5">
-      <pose>-14.724283 -21.283300 0 0 0 5</pose>
+      <pose>-14.724283 -21.283300 0 0 0 4.7</pose>
       <static>true</static>
       <link name="rocks_5">
         <visual name="visual">
@@ -240,7 +240,7 @@
     </model>
 
     <model name="rocks_6">
-      <pose>-18.000000 20.000000 0 0 0 5</pose>
+      <pose>-18.000000 20.000000 0 0 0 4.7</pose>
       <static>true</static>
       <link name="rocks_6">
         <visual name="visual">
@@ -261,7 +261,7 @@
     </model>
 
     <model name="rocks_7">
-      <pose>31.342571 24.251696 0 0 0 5</pose>
+      <pose>31.342571 24.251696 0 0 0 4.7</pose>
       <static>true</static>
       <link name="rocks_7">
         <visual name="visual">
@@ -282,7 +282,7 @@
     </model>
 
     <model name="rocks_8">
-      <pose>48.000000 -30.000000 0 0 0 5</pose>
+      <pose>48.000000 -30.000000 0 0 0 4.7</pose>
       <static>true</static>
       <link name="rocks_8">
         <visual name="visual">
@@ -303,7 +303,7 @@
     </model>
 
     <model name="rocks_9">
-      <pose>49.361488 -42.585499 0 0 0 5</pose>
+      <pose>49.361488 -42.585499 0 0 0 4.7</pose>
       <static>true</static>
       <link name="rocks_9">
         <visual name="visual">
@@ -324,7 +324,7 @@
     </model>
 
     <model name="rocks_10">
-      <pose>51.557194 32.292305 0 0 0 5</pose>
+      <pose>51.557194 32.292305 0 0 0 4.7</pose>
       <static>true</static>
       <link name="rocks_10">
         <visual name="visual">
@@ -345,7 +345,7 @@
     </model>
 
     <model name="rocks_11">
-      <pose>19.583100 51.830500 0 0 0 5</pose>
+      <pose>19.583100 51.830500 0 0 0 4.7</pose>
       <static>true</static>
       <link name="rocks_11">
         <visual name="visual">
@@ -366,7 +366,7 @@
     </model>
 
     <model name="rocks_12">
-      <pose>-0.299741 40.586400 0 0 0 5</pose>
+      <pose>-0.299741 40.586400 0 0 0 4.7</pose>
       <static>true</static>
       <link name="rocks_12">
         <visual name="visual">
@@ -387,7 +387,7 @@
     </model>
 
     <model name="rocks_13">
-      <pose>62.104600 -9.223580 0 0 0 5</pose>
+      <pose>62.104600 -9.223580 0 0 0 4.7</pose>
       <static>true</static>
       <link name="rocks_13">
         <visual name="visual">
@@ -408,7 +408,7 @@
     </model>
 
     <model name="rocks_14">
-      <pose>21.181600 -41.546000 0 0 0 5</pose>
+      <pose>21.181600 -41.546000 0 0 0 4.7</pose>
       <static>true</static>
       <link name="rocks_14">
         <visual name="visual">
@@ -429,7 +429,7 @@
     </model>
 
     <model name="rocks_15">
-      <pose>22.379000 -53.562900 0 0 0 5</pose>
+      <pose>22.379000 -53.562900 0 0 0 4.7</pose>
       <static>true</static>
       <link name="rocks_15">
         <visual name="visual">
