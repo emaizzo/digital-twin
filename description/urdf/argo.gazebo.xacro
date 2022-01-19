@@ -9,7 +9,7 @@
 
   <xacro:macro name="argo_hydro_model" params="namespace">
     <link name="${namespace}/base_link">
-      <neutrally_buoyant>1</neutrally_buoyant>
+      <neutrally_buoyant>0</neutrally_buoyant>
       <volume>${volume}</volume>
       <box>
         <width>${y_size}</width>
@@ -17,6 +17,9 @@
         <height>${z_size}</height>
       </box>
       <center_of_buoyancy>${cob}</center_of_buoyancy>
+      <!-- <metacentric_width>0.4</metacentric_width>
+      <metacentric_length>0.4</metacentric_length>
+      <water_level_plane_area>0.48</water_level_plane_area> -->
       <hydrodynamic_model>
         <type>fossen</type>
         <added_mass>

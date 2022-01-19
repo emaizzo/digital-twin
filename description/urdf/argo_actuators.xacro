@@ -2,12 +2,12 @@
 
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:thruster_macro namespace="${namespace}" thruster_id="0">
-    <origin xyz="-0.088 -0.1192 -0.0061828" rpy="0 0 ${pi}" />
+    <origin xyz="-0.25 -0.1192 -0.0061828" rpy="0 0 ${pi}" />
   </xacro:thruster_macro>
   <xacro:thruster_macro namespace="${namespace}" thruster_id="1">
-    <origin xyz="-0.088 0.1192 -0.0061828" rpy="0 0 ${pi}" />
+    <origin xyz="-0.25 0.1192 -0.0061828" rpy="0 0 ${pi}" />
   </xacro:thruster_macro>
-  <xacro:thruster_macro namespace="${namespace}" thruster_id="2">
-    <origin xyz="0.067 0 0.1258172" rpy="0 -${0.5*pi} 0" />
-  </xacro:thruster_macro>
+  <!-- <xacro:thruster_macro namespace="${namespace}" thruster_id="2">
+    <origin xyz="0.1 0 0.1258172" rpy="0 -${0.5*pi} 0" />
+  </xacro:thruster_macro> -->
 </robot>

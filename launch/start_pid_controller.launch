@@ -27,6 +27,6 @@
   </include>
 
   <group if="$(arg gui_on)">
-    <node name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find robot-lab)/rviz/argo_control.rviz" />
+    <node name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find robot-lab)/rviz/default.rviz" />
   </group>
 </launch>
