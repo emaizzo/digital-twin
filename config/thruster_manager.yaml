@@ -9,4 +9,4 @@ thruster_manager:
   update_rate: 50
   conversion_fcn: proportional
   conversion_fcn_params:
-    gain: 0.00001
+    gain: 0.026546960744430276

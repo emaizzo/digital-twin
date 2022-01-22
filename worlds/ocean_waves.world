@@ -64,7 +64,7 @@
     <!-- Bounding box with sea surface -->
     <include>
       <uri>model://ocean</uri>
-      <pose>0 0 -0.1 0 0 0</pose>
+      <pose>0 0 -0.15 0 0 0</pose>
     </include>
 
     <!-- Heightmap -->
@@ -113,7 +113,7 @@
       </camera>
     </gui>
 
-    <model name="duck">
+    <!-- <model name="duck">
       <pose>75.566971 -11.053159 0.5 0 0 0</pose>
       <static>true</static>
       <link name="duck">
@@ -447,6 +447,6 @@
           </geometry>
         </collision>
       </link>
-    </model>
+    </model> -->
   </world>
 </sdf>

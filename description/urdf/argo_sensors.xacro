@@ -111,7 +111,7 @@
   </xacro:macro>
 
   <xacro:forward_multibeam_p900_custom namespace="${namespace}" parent_link="${namespace}/base_link">
-    <origin xyz="0.45 0.0025 0.19" rpy="0 0 0" />
+    <origin xyz="0.45 0.0025 0.19" rpy="0 -0.05 0" />
   </xacro:forward_multibeam_p900_custom>
 
   <link name="${namespace}/depth_sounder">

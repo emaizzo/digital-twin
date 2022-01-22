@@ -9,7 +9,6 @@
   <xacro:property name="collision_mesh_file" value="file://$(find robot-lab)/meshes/argo.dae" />
 
   <xacro:property name="mass" value="28" />
-  <!-- <xacro:property name="mass" value="37.498" /> -->
   <xacro:property name="x_size" value="1.20" />
   <xacro:property name="y_size" value="0.86" />
   <xacro:property name="z_size" value="0.6" />
