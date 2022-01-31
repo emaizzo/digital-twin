@@ -76,7 +76,7 @@
 
   <!-- Side scan sonar -->
   <xacro:macro name="argo_sidescan_sonar" params="namespace parent_link suffix *origin">
-    <xacro:argo_multibeam_sonar namespace="${namespace}" suffix="${suffix}" parent_link="${parent_link}" topic="sss_${suffix}" mass="0.015" update_rate="2" samples="60" fov="${pi/3.0}" range_min="1.0" range_max="200.0" range_stddev="0.027" mesh="">
+    <xacro:argo_multibeam_sonar namespace="${namespace}" suffix="${suffix}" parent_link="${parent_link}" topic="sss_${suffix}" mass="0.015" update_rate="2" samples="60" fov="${pi/3.0}" range_min="1.0" range_max="50.0" range_stddev="0.027" mesh="">
       <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001" />
       <xacro:insert_block name="origin" />
       <visual>
