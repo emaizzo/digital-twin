@@ -1,4 +1,5 @@
 <launch>
+    <env name="GAZEBO_MODEL_PATH" value="$(find robot-lab)/meshes" />
     <arg name="use_ned_frame" default="false" doc="If true, uses the NED (North-East-Down) frame conversion. If false, ENU (East-North-Up) will be used per default." />
     <arg name="x" default="0" doc="X coordinate of the vehicle's initial position (in ENU)" />
     <arg name="y" default="0" doc="Y coordinate of the vehicle's initial position (in ENU)" />
