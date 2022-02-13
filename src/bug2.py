@@ -22,11 +22,11 @@ position_ = Point()
 initial_position_ = Point()
 initial_position_.x = rospy.get_param('initial_x')
 initial_position_.y = rospy.get_param('initial_y')
-initial_position_.z = 0
+initial_position_.z = rospy.get_param('initial_z')
 desired_position_ = Point()
 desired_position_.x = rospy.get_param('des_pos_x')
 desired_position_.y = rospy.get_param('des_pos_y')
-desired_position_.z = 0
+desired_position_.z = rospy.get_param('des_pos_z')
 regions_ = None
 state_desc_ = ['Go to point', 'wall following']
 state_ = 0
@@ -99,11 +99,11 @@ def main():
     global regions_, position_, desired_position_, state_, yaw_, yaw_error_allowed_
     global srv_client_go_to_point_, srv_client_wall_follower_
     global count_state_time_, count_loop_
-    
+
     rospy.init_node('bug0')
     
-    rospy.Subscriber('/rrbot/laser/scan', LaserScan, clbk_laser)
-    rospy.Subscriber('/odom', Odometry, clbk_odom)
+    rospy.Subscriber('/argo/sonar', LaserScan, clbk_laser)
+    rospy.Subscriber('/argo/pose_gt', Odometry, clbk_odom)
     
     rospy.wait_for_service('/go_to_point_switch')
     rospy.wait_for_service('/wall_follower_switch')
@@ -115,7 +115,7 @@ def main():
     # initialize going to the point
     change_state(0)
     
-    rate = rospy.Rate(20)
+    rate = rospy.Rate(100)
     while not rospy.is_shutdown():
         if regions_ == None:
             continue
@@ -123,7 +123,7 @@ def main():
         distance_position_to_line = distance_to_line(position_)
         
         if state_ == 0:
-            if regions_['front'] > 0.15 and regions_['front'] < 1:
+            if regions_['front'] > 0.50 and regions_['front'] < 2:
                 change_state(1)
         
         elif state_ == 1:

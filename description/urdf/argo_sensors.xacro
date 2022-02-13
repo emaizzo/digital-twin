@@ -37,7 +37,7 @@
     </joint>
 
     <gazebo reference="${namespace}/sonar${suffix}_link">
-      <sensor type="gpu_ray" name="sonar${suffix}">
+      <sensor type="ray" name="sonar${suffix}">
         <pose>0 0 0 0 0 0</pose>
         <visualize>true</visualize>
         <update_rate>${update_rate}</update_rate>
@@ -61,7 +61,7 @@
             <stddev>${range_stddev}</stddev>
           </noise>
         </ray>
-        <plugin name="sonar${suffix}_controller" filename="libgazebo_ros_gpu_laser.so">
+        <plugin name="sonar${suffix}_controller" filename="libgazebo_ros_laser.so">
           <topicName>${topic}</topicName>
           <frameName>sonar${suffix}_link</frameName>
         </plugin>
@@ -99,7 +99,7 @@
   </xacro:argo_sidescan_sonar>
 
   <xacro:macro name="forward_multibeam_p900_custom" params="namespace parent_link *origin">
-    <xacro:argo_multibeam_sonar namespace="${namespace}" suffix="" parent_link="${parent_link}" topic="sonar" mass="0.02" update_rate="15" samples="512" fov="1.5708" range_min="1.0" range_max="30.0" range_stddev="0.027" mesh="">
+    <xacro:argo_multibeam_sonar namespace="${namespace}" suffix="" parent_link="${parent_link}" topic="sonar" mass="0.02" update_rate="100" samples="720" fov="4" range_min="0.5" range_max="5.6" range_stddev="0.01" mesh="">
       <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001" />
       <xacro:insert_block name="origin" />
       <visual>
@@ -111,7 +111,7 @@
   </xacro:macro>
 
   <xacro:forward_multibeam_p900_custom namespace="${namespace}" parent_link="${namespace}/base_link">
-    <origin xyz="0.45 0.0025 0.19" rpy="0 -0.05 0" />
+    <origin xyz="0.45 0.0025 0.19" rpy="0 0 0" />
   </xacro:forward_multibeam_p900_custom>
 
   <link name="${namespace}/depth_sounder">

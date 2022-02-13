@@ -3,12 +3,16 @@
 <launch>
     <arg name="initial_x" default="0" />
     <arg name="initial_y" default="0" />
+    <arg name="initial_z" default="-1" />
     <arg name="des_x" default="75.566971" />
     <arg name="des_y" default="-11.053159" />
+    <arg name="des_z" default="-1" />
     <param name="initial_x" value="$(arg initial_x)" />
     <param name="initial_y" value="$(arg initial_y)" />
+    <param name="initial_z" value="$(arg initial_z)" />
     <param name="des_pos_x" value="$(arg des_x)" />
     <param name="des_pos_y" value="$(arg des_y)" />
+    <param name="des_pos_z" value="$(arg des_z)" />
     <node pkg="robot-lab" type="follow_wall.py" name="wall_follower" />
     <node pkg="robot-lab" type="go_to_point.py" name="go_to_point" />
     <node pkg="robot-lab" type="bug2.py" name="bug2" output="screen" />

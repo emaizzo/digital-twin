@@ -3,7 +3,7 @@
 # import ros stuff
 import rospy
 from sensor_msgs.msg import LaserScan
-from geometry_msgs.msg import Twist
+from geometry_msgs.msg import Wrench
 from nav_msgs.msg import Odometry
 from tf import transformations
 from std_srvs.srv import *
@@ -55,7 +55,7 @@ def change_state(state):
 def take_action():
     global regions_
     regions = regions_
-    msg = Twist()
+    msg = Wrench()
     linear_x = 0
     angular_z = 0
     
@@ -92,21 +92,21 @@ def take_action():
         rospy.loginfo(regions)
 
 def find_wall():
-    msg = Twist()
-    msg.linear.x = 0.2
-    msg.angular.z = -0.3
+    msg = Wrench()
+    msg.force.x = 4.0
+    msg.torque.z = -1.5
     return msg
 
 def turn_left():
-    msg = Twist()
-    msg.angular.z = 0.3
+    msg = Wrench()
+    msg.torque.z = 1.5
     return msg
 
 def follow_the_wall():
     global regions_
-    
-    msg = Twist()
-    msg.linear.x = 0.5
+
+    msg = Wrench()
+    msg.force.x = 10.0
     return msg
 
 def main():
@@ -114,19 +114,19 @@ def main():
     
     rospy.init_node('reading_laser')
     
-    pub_ = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
+    pub_ = rospy.Publisher('/argo/thruster_manager/input', Wrench, queue_size=1)
     
-    rospy.Subscriber('/rrbot/laser/scan', LaserScan, clbk_laser)
+    rospy.Subscriber('/argo/sonar', LaserScan, clbk_laser)
     
     rospy.Service('wall_follower_switch', SetBool, wall_follower_switch)
     
-    rate = rospy.Rate(20)
+    rate = rospy.Rate(100)
     while not rospy.is_shutdown():
         if not active_:
             rate.sleep()
             continue
         
-        msg = Twist()
+        msg = Wrench()
         if state_ == 0:
             msg = find_wall()
         elif state_ == 1:

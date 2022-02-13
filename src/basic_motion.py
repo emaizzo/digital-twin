@@ -87,7 +87,7 @@ if __name__ == '__main__':
 
         time.sleep(2)
 
-        move(velocity_publisher, 20, 9.0, True)
+        move(velocity_publisher, 10, 9.0, True)
         # go_to_goal(velocity_publisher, 3, 3)
 
     except rospy.ROSInterruptException:

@@ -3,7 +3,7 @@
 # import ros stuff
 import rospy
 from sensor_msgs.msg import LaserScan
-from geometry_msgs.msg import Twist, Point
+from geometry_msgs.msg import Point, Wrench
 from nav_msgs.msg import Odometry
 from tf import transformations
 from std_srvs.srv import *
@@ -21,7 +21,7 @@ state_ = 0
 desired_position_ = Point()
 desired_position_.x = rospy.get_param('des_pos_x')
 desired_position_.y = rospy.get_param('des_pos_y')
-desired_position_.z = 0
+desired_position_.z = rospy.get_param('des_pos_z')
 # parameters
 yaw_precision_ = math.pi / 90 # +/- 2 degree allowed
 dist_precision_ = 0.3
@@ -72,11 +72,11 @@ def fix_yaw(des_pos):
     
     rospy.loginfo(err_yaw)
     
-    twist_msg = Twist()
+    wrench_msg = Wrench()
     if math.fabs(err_yaw) > yaw_precision_:
-        twist_msg.angular.z = 0.7 if err_yaw > 0 else -0.7
+        wrench_msg.torque.z = 3.5 if err_yaw > 0 else -3.5
     
-    pub.publish(twist_msg)
+    pub.publish(wrench_msg)
     
     # state change conditions
     if math.fabs(err_yaw) <= yaw_precision_:
@@ -90,10 +90,10 @@ def go_straight_ahead(des_pos):
     err_pos = math.sqrt(pow(des_pos.y - position_.y, 2) + pow(des_pos.x - position_.x, 2))
     
     if err_pos > dist_precision_:
-        twist_msg = Twist()
-        twist_msg.linear.x = 0.6
-        twist_msg.angular.z = 0.2 if err_yaw > 0 else -0.2
-        pub.publish(twist_msg)
+        wrench_msg = Wrench()
+        wrench_msg.force.x = 12.0
+        wrench_msg.torque.z = 1.0 if err_yaw > 0 else -1.0
+        pub.publish(wrench_msg)
     else:
         print ('Position error: [%s]' % err_pos)
         change_state(2)
@@ -104,23 +104,23 @@ def go_straight_ahead(des_pos):
         change_state(0)
 
 def done():
-    twist_msg = Twist()
-    twist_msg.linear.x = 0
-    twist_msg.angular.z = 0
-    pub.publish(twist_msg)
+    wrench_msg = Wrench()
+    wrench_msg.force.x = 0
+    wrench_msg.torque.z = 0
+    pub.publish(wrench_msg)
 
 def main():
     global pub, active_
     
     rospy.init_node('go_to_point')
     
-    pub = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
+    pub = rospy.Publisher('/argo/thruster_manager/input', Wrench, queue_size=1)
     
-    sub_odom = rospy.Subscriber('/odom', Odometry, clbk_odom)
+    sub_odom = rospy.Subscriber('/argo/pose_gt', Odometry, clbk_odom)
     
     srv = rospy.Service('go_to_point_switch', SetBool, go_to_point_switch)
     
-    rate = rospy.Rate(20)
+    rate = rospy.Rate(100)
     while not rospy.is_shutdown():
         if not active_:
             continue
