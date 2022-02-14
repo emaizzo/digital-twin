@@ -11,7 +11,7 @@
     <arg name="headless" default="false" />
     <arg name="debug" default="false" />
 
-    <include file="$(find robot-lab)/launch/ocean_waves.launch" />
+    <!-- <include file="$(find robot-lab)/launch/ocean_waves.launch" /> -->
 
     <include file="$(find robot-lab)/launch/upload_argo.launch">
         <arg name="x" value="$(arg x)" />
