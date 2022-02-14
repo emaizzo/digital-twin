@@ -202,35 +202,6 @@ include_directories(
 # catkin_add_nosetests(test)
 
 ################################################################################
-# Find catkin packages and libraries for catkin and system dependencies
-################################################################################
-find_package(catkin REQUIRED COMPONENTS
-  rospy
-  std_msgs
-  sensor_msgs
-  geometry_msgs
-  nav_msgs
-)
-
-################################################################################
-# Setup for python modules and scripts
-################################################################################
-catkin_python_setup()
-
-################################################################################
-# Declare catkin specific configuration to be passed to dependent projects
-################################################################################
-catkin_package(
-  CATKIN_DEPENDS
-    rospy
-    std_msgs
-    sensor_msgs
-    geometry_msgs
-    nav_msgs
-    message_runtime
-)
-
-################################################################################
 # Build
 ################################################################################
 include_directories(
@@ -238,16 +209,26 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-install(DIRECTORY launch
+install(DIRECTORY launch worlds description config meshes rviz
 	DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
 
 find_package(catkin REQUIRED COMPONENTS
   gazebo_ros
+  uuv_descriptions
+  uuv_sensor_ros_plugins
+  uuv_gazebo_ros_plugins
+  uuv_assistants
+  uuv_trajectory_control
 )
 
-catkin_package(DEPENDS gazebo_ros)
-
-install(DIRECTORY launch worlds
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+catkin_package(DEPENDS 
+  gazebo_ros
+  uuv_descriptions
+  uuv_sensor_ros_plugins
+  uuv_gazebo_ros_plugins
+  uuv_assistants
+  uuv_trajectory_control
+  uuv_thruster_manager
+  uuv_gazebo_worlds
 )
