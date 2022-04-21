@@ -200,3 +200,35 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+################################################################################
+# Build
+################################################################################
+include_directories(
+  include
+  ${catkin_INCLUDE_DIRS}
+)
+
+install(DIRECTORY launch worlds description config meshes rviz
+	DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
+
+find_package(catkin REQUIRED COMPONENTS
+  gazebo_ros
+  uuv_descriptions
+  uuv_sensor_ros_plugins
+  uuv_gazebo_ros_plugins
+  uuv_assistants
+  uuv_trajectory_control
+)
+
+catkin_package(DEPENDS 
+  gazebo_ros
+  uuv_descriptions
+  uuv_sensor_ros_plugins
+  uuv_gazebo_ros_plugins
+  uuv_assistants
+  uuv_trajectory_control
+  uuv_thruster_manager
+  uuv_gazebo_worlds
+)
