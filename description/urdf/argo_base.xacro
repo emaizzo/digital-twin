@@ -2,11 +2,11 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:include filename="$(find uuv_descriptions)/urdf/common.urdf.xacro" />
   <xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/sensor_snippets.xacro" />
-  <xacro:include filename="$(find robot-lab)/description/urdf/argo_snippets.xacro" />
+  <xacro:include filename="$(find digital-twin)/description/urdf/argo_snippets.xacro" />
   <xacro:include filename="$(find uuv_gazebo_ros_plugins)/urdf/snippets.xacro" />
 
-  <xacro:property name="visual_mesh_file" value="file://$(find robot-lab)/meshes/argo.dae" />
-  <xacro:property name="collision_mesh_file" value="file://$(find robot-lab)/meshes/argo.dae" />
+  <xacro:property name="visual_mesh_file" value="file://$(find digital-twin)/meshes/argo.dae" />
+  <xacro:property name="collision_mesh_file" value="file://$(find digital-twin)/meshes/argo.dae" />
 
   <xacro:property name="mass" value="28" />
   <xacro:property name="x_size" value="1.20" />
@@ -41,8 +41,8 @@
 
     <xacro:insert_block name="gazebo" />
 
-    <xacro:include filename="$(find robot-lab)/description/urdf/argo_sensors.xacro" />
-    <xacro:include filename="$(find robot-lab)/description/urdf/argo_actuators.xacro" />
+    <xacro:include filename="$(find digital-twin)/description/urdf/argo_sensors.xacro" />
+    <xacro:include filename="$(find digital-twin)/description/urdf/argo_actuators.xacro" />
 
   </xacro:macro>
 </robot>

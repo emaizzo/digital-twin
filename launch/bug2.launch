@@ -13,7 +13,7 @@
     <param name="des_pos_x" value="$(arg des_x)" />
     <param name="des_pos_y" value="$(arg des_y)" />
     <param name="des_pos_z" value="$(arg des_z)" />
-    <node pkg="robot-lab" type="follow_wall.py" name="wall_follower" />
-    <node pkg="robot-lab" type="go_to_point.py" name="go_to_point" />
-    <node pkg="robot-lab" type="bug2.py" name="bug2" output="screen" />
+    <node pkg="digital-twin" type="follow_wall.py" name="wall_follower" />
+    <node pkg="digital-twin" type="go_to_point.py" name="go_to_point" />
+    <node pkg="digital-twin" type="bug2.py" name="bug2" output="screen" />
 </launch>

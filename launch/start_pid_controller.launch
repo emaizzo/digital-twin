@@ -8,9 +8,9 @@
   <arg name="slope" default="2.0,0.89,2.0,0.0,0.0,0.8" />
 
   <!-- Thruster manager configuration -->
-  <arg name="thruster_manager_output_dir" default="$(find robot-lab)/config" doc="Output directory for the generated thruster manager" />
-  <arg name="thruster_manager_config_file" default="$(find robot-lab)/config/thruster_manager.yaml" doc="File storing the configuration of the thruster manager" />
-  <arg name="tam_file" default="$(find robot-lab)/config/TAM.yaml" doc="File storing the thruster allocation matrix" />
+  <arg name="thruster_manager_output_dir" default="$(find digital-twin)/config" doc="Output directory for the generated thruster manager" />
+  <arg name="thruster_manager_config_file" default="$(find digital-twin)/config/thruster_manager.yaml" doc="File storing the configuration of the thruster manager" />
+  <arg name="tam_file" default="$(find digital-twin)/config/TAM.yaml" doc="File storing the thruster allocation matrix" />
 
   <include file="$(find uuv_trajectory_control)/launch/rov_nmb_sm_controller.launch">
     <arg name="uuv_name" value="$(arg uuv_name)" />
@@ -27,6 +27,6 @@
   </include>
 
   <group if="$(arg gui_on)">
-    <node name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find robot-lab)/rviz/argo_control.rviz" />
+    <node name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find digital-twin)/rviz/argo_control.rviz" />
   </group>
 </launch>

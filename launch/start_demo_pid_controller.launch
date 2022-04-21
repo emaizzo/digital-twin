@@ -1,5 +1,5 @@
 <launch>
-    <env name="GAZEBO_MODEL_PATH" value="$(find robot-lab)/meshes" />
+    <env name="GAZEBO_MODEL_PATH" value="$(find digital-twin)/meshes" />
     <arg name="use_ned_frame" default="false" doc="If true, uses the NED (North-East-Down) frame conversion. If false, ENU (East-North-Up) will be used per default." />
     <arg name="x" default="0" doc="X coordinate of the vehicle's initial position (in ENU)" />
     <arg name="y" default="0" doc="Y coordinate of the vehicle's initial position (in ENU)" />
@@ -11,9 +11,9 @@
     <arg name="headless" default="false" />
     <arg name="debug" default="false" />
 
-    <include file="$(find robot-lab)/launch/ocean_waves.launch" />
+    <include file="$(find digital-twin)/launch/ocean_waves.launch" />
 
-    <include file="$(find robot-lab)/launch/upload_argo.launch">
+    <include file="$(find digital-twin)/launch/upload_argo.launch">
         <arg name="x" value="$(arg x)" />
         <arg name="y" value="$(arg y)" />
         <arg name="z" value="$(arg z)" />
@@ -21,7 +21,7 @@
         <arg name="use_ned_frame" value="$(arg use_ned_frame)" />
     </include>
 
-    <include file="$(find robot-lab)/launch/start_pid_controller.launch">
+    <include file="$(find digital-twin)/launch/start_pid_controller.launch">
         <arg name="use_ned_frame" value="$(arg use_ned_frame)" />
     </include>
 </launch>

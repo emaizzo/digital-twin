@@ -4,8 +4,8 @@
   <xacro:arg name="namespace" default="argo" />
   <xacro:arg name="inertial_reference_frame" default="world" />
 
-  <xacro:include filename="$(find robot-lab)/description/urdf/argo_base.xacro" />
-  <xacro:include filename="$(find robot-lab)/description/urdf/argo.gazebo.xacro" />
+  <xacro:include filename="$(find digital-twin)/description/urdf/argo_base.xacro" />
+  <xacro:include filename="$(find digital-twin)/description/urdf/argo.gazebo.xacro" />
 
   <xacro:argo_base namespace="$(arg namespace)" inertial_reference_frame="$(arg inertial_reference_frame)">
     <gazebo>

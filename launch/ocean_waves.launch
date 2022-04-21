@@ -3,7 +3,7 @@
     <arg name="paused" default="false" />
     <arg name="set_timeout" default="false" />
     <arg name="timeout" default="0.0" />
-    <arg name="world_file" default="$(find robot-lab)/worlds/ocean_waves.world" />
+    <arg name="world_file" default="$(find digital-twin)/worlds/ocean_waves.world" />
 
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="world_name" value="$(arg world_file)" />
