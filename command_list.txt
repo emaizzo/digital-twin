@@ -1,4 +1,0 @@
-VERSIONS
-- ROS: Melodic
-- Gazebo: 9.0.0
-- Rviz: 1.13.21
